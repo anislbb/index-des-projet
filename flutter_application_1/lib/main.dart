@@ -1,6 +1,21 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (kIsWeb) {
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+            apiKey: "AIzaSyD4BuOrCIpXoaCfC6-6Ga8_Nkq_GX5cDm4",
+            authDomain: "index-des-projet.firebaseapp.com",
+            projectId: "index-des-projet",
+            storageBucket: "index-des-projet.firebasestorage.app",
+            messagingSenderId: "672994217766",
+            appId: "1:672994217766:web:7672ab85c73d77969efbe7"));
+  } else {
+    await Firebase.initializeApp();
+  }
   runApp(const MyApp());
 }
 
